@@ -62,6 +62,25 @@ public class Flower : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Called when the flower wakes up
+    /// </summary>
+    private void Awake()
+    {
+        // Find the flower's mesh renderer and get the main material
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        flowerMaterial = meshRenderer.material;
+
+
+        // Find flower and nectar colliders
+        flowerCollider = transform.Find("FlowerCollider").GetComponent<Collider>();
+        nectarCollider = transform.Find("FlowerNectarCollider").GetComponent<Collider>();
+    }
+
+
+
+
     /// <summary>
     /// Attempt to remove nectar from the flower
     /// </summary>
@@ -107,7 +126,6 @@ public class Flower : MonoBehaviour
         flowerMaterial.SetColor("_BaseColor", fullFowerColor);
     }
 
-
-
+  
 
 }
